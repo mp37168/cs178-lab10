@@ -1,7 +1,7 @@
 # name: Maddie Phillips
 # date: 3/8
 # description: CRUD interface for StarbucksDrinks DynamoDB table
-# proposed score: 4, Had to use ChatGPT to find a foramt that worked for decimal values 
+# proposed score: 3, Had to use ChatGPT to find a foramt that worked for decimal values 
 
 import boto3
 from decimal import Decimal
