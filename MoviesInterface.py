@@ -10,32 +10,23 @@ dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 table = dynamodb.Table('Movies')
 
 def create_movie():
-    """
-    Prompt user for a Movie Title.
-    Add the movie to the database with the title and an empty Ratings list.
-    """
-    table = get_table()
-
     title = input("Enter movie title: ")
+    year = input("Enter year (optional): ")
 
-    try:
-        year = int(input("Enter movie year: "))
-    except ValueError:
-        print("Year must be a number.")
-        return
-
-    genre = input("Enter genre: ")
+    if year == "":
+        year = None
+    else:
+        year = int(year)
 
     table.put_item(
         Item={
             "Title": title,
             "Year": year,
-            "Genre": genre,
             "Ratings": []
         }
     )
 
-    print("Movie added successfully.")
+    print("Movie added.")
 
 def get_table():
     dynamodb = boto3.resource("dynamodb", region_name="us-east-1")
